@@ -5,6 +5,9 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter_wallet_ui_challenge/src/widgets/percent_indicator.dart';
 import 'package:flutter_wallet_ui_challenge/src/widgets/wave_progress.dart';
 
+import '../data/data.dart';
+import '../widgets/payment_card.dart';
+
 var data = [
   new DataPerItem('Home', 35, Colors.greenAccent),
   new DataPerItem('Food & Drink', 25, Colors.yellow),
@@ -31,73 +34,57 @@ class OverviewPage extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         padding: EdgeInsets.only(
           left: 20,
-          top: 70,
+          top: 20,
         ),
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                "Overview",
-                style: TextStyle(
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              FlatButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text(
-                  "Cancel",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.black87),
-                ),
-              ),
-            ],
+          Text(
+            "Overview",
+            style: TextStyle(
+              fontSize: 35,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           SizedBox(
             height: 25,
           ),
-          Text(
-            "Accounts",
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              inherit: true,
-              letterSpacing: 0.4,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                "Cash Flow",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  inherit: true,
+                  letterSpacing: 0.4,
+                ),
+              ),
+              FlatButton(
+                onPressed: () {},
+                child: Text(
+                  "July 2018",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black87),
+                ),
+              )
+            ],
           ),
           Row(
             children: <Widget>[
-              colorCard("Cash", 35.170, 1, context, Color(0xFF1b5bff)),
-              colorCard("Credit Debt", 4320, -1, context, Color(0xFFff3f5e)),
+              colorCard("Income", 35.170, 1, context, Color(0xFF1b5bff)),
+              colorCard("Expense", 4320, -1, context, Color(0xFFff3f5e)),
             ],
           ),
           SizedBox(
             height: 30,
           ),
-          RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(
-                  text: "Spending",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Varela",
-                  ),
-                ),
-                TextSpan(
-                  text: "    July 2018",
-                  style: TextStyle(
-                    color: Colors.grey.shade400,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16,
-                    fontFamily: "Varela",
-                  ),
-                ),
-              ],
+          Text(
+            "Spending",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              fontFamily: "Varela",
             ),
           ),
           Container(
@@ -151,28 +138,13 @@ class OverviewPage extends StatelessWidget {
           SizedBox(
             height: 30,
           ),
-          RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(
-                  text: "Budgets",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Varela",
-                  ),
-                ),
-                TextSpan(
-                  text: "    July",
-                  style: TextStyle(
-                    color: Colors.grey.shade400,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16,
-                    fontFamily: "Varela",
-                  ),
-                ),
-              ],
+          Text(
+            "Budgets",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              fontFamily: "Varela",
             ),
           ),
           Container(
@@ -216,7 +188,7 @@ class OverviewPage extends StatelessWidget {
             height: 30,
           ),
           Text(
-            "Cash flow",
+            "Transactions",
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -224,21 +196,14 @@ class OverviewPage extends StatelessWidget {
               letterSpacing: 0.4,
             ),
           ),
-          vaweCard(
-            context,
-            "Earned",
-            200,
-            1,
-            Colors.grey.shade100,
-            Color(0xFF716cff),
+          PaymentCardWidget(
+            payment: getPaymentsCard()[0],
           ),
-          vaweCard(
-            context,
-            "Spent",
-            3210,
-            -1,
-            Colors.grey.shade100,
-            Color(0xFFff596b),
+          PaymentCardWidget(
+            payment: getPaymentsCard()[1],
+          ),
+          PaymentCardWidget(
+            payment: getPaymentsCard()[3],
           ),
         ],
       ),

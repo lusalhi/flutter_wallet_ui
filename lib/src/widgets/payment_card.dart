@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_wallet_ui_challenge/src/models/payment_model.dart';
 
+import '../utils/screen_size.dart';
+
 class PaymentCardWidget extends StatefulWidget {
   final PaymentModel payment;
 
@@ -14,6 +16,23 @@ class _PaymentCardWidgetState extends State<PaymentCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(
+        top: 15,
+        right: 20,
+      ),
+      padding: EdgeInsets.only(top: 10),
+      height: screenAwareSize(80, context),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(6),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade100,
+            blurRadius: 6,
+            spreadRadius: 10,
+          )
+        ],
+      ),
       child: ListTile(
         dense: true,
         trailing: Text(
