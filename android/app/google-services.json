@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1087942011692",
+    "firebase_url": "https://wallet-ee0b1.firebaseio.com",
+    "project_id": "wallet-ee0b1",
+    "storage_bucket": "wallet-ee0b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087942011692:android:ccb569abe5fe7dffd61a89",
+        "android_client_info": {
+          "package_name": "com.lusalhi.wallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087942011692-k6mjp9ko557doo887g6ltvm0kb4v17ov.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBk9CrHOd2D3WzeKRuskEfxfViisO0_jMw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1087942011692-k6mjp9ko557doo887g6ltvm0kb4v17ov.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -3,6 +3,7 @@ import 'package:flutter_wallet_ui_challenge/src/models/credit_card_model.dart';
 import 'package:flutter_wallet_ui_challenge/src/models/payment_model.dart';
 import 'package:flutter_wallet_ui_challenge/src/models/user_model.dart';
 
+//gak usah
 List<CreditCardModel> getCreditCards() {
   List<CreditCardModel> creditCards = [];
   creditCards.add(CreditCardModel(
@@ -18,6 +19,7 @@ List<CreditCardModel> getCreditCards() {
   return creditCards;
 }
 
+//gak usah
 List<UserModel> getUsersCard() {
   List<UserModel> userCards = [
     UserModel("Anna", "assets/images/users/anna.jpeg"),

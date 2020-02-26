@@ -1,4 +1,4 @@
-package com.example.flutter_wallet_ui_challenge;
+package com.lusalhi.wallet;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

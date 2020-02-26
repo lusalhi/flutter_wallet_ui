@@ -69,11 +69,15 @@ class OverviewPage extends StatelessWidget {
               )
             ],
           ),
-          Row(
-            children: <Widget>[
-              colorCard("Income", 35.170, 1, context, Color(0xFF1b5bff)),
-              colorCard("Expense", 4320, -1, context, Color(0xFFff3f5e)),
-            ],
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: <Widget>[
+                colorCard("Total", 30850, 1, context, Colors.green),
+                colorCard("Income", 35.170, 1, context, Color(0xFF1b5bff)),
+                colorCard("Expense", 4320, -1, context, Color(0xFFff3f5e)),
+              ],
+            ),
           ),
           SizedBox(
             height: 30,
@@ -319,7 +323,7 @@ class OverviewPage extends StatelessWidget {
       margin: EdgeInsets.only(top: 15, right: 15),
       padding: EdgeInsets.all(15),
       height: screenAwareSize(90, context),
-      width: _media.width / 2 - 25,
+      width: _media.width / 2 - 50,
       decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(15),
