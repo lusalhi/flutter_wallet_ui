@@ -1,34 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wallet_ui_challenge/src/models/credit_card_model.dart';
 import 'package:flutter_wallet_ui_challenge/src/models/payment_model.dart';
-import 'package:flutter_wallet_ui_challenge/src/models/user_model.dart';
-
-//gak usah
-List<CreditCardModel> getCreditCards() {
-  List<CreditCardModel> creditCards = [];
-  creditCards.add(CreditCardModel(
-      "4616900007729988",
-      "https://resources.mynewsdesk.com/image/upload/ojf8ed4taaxccncp6pcp.png",
-      "06/23",
-      "192"));
-  creditCards.add(CreditCardModel(
-      "3015788947523652",
-      "https://resources.mynewsdesk.com/image/upload/ojf8ed4taaxccncp6pcp.png",
-      "04/25",
-      "217"));
-  return creditCards;
-}
-
-//gak usah
-List<UserModel> getUsersCard() {
-  List<UserModel> userCards = [
-    UserModel("Anna", "assets/images/users/anna.jpeg"),
-    UserModel("Gillian", "assets/images/users/gillian.jpeg"),
-    UserModel("Judith", "assets/images/users/judith.jpeg"),
-  ];
-
-  return userCards;
-}
 
 List<PaymentModel> getPaymentsCard() {
   List<PaymentModel> paymentCards = [
