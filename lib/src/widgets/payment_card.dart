@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wallet_ui_challenge/src/models/payment_model.dart';
+import 'package:flutter_wallet_ui_challenge/src/models/transaction_model.dart';
 
 import '../utils/screen_size.dart';
 
 class PaymentCardWidget extends StatefulWidget {
-  final PaymentModel payment;
+  final TransactionModel transaction;
 
-  const PaymentCardWidget({Key key, this.payment}) : super(key: key);
+  const PaymentCardWidget({Key key, this.transaction}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _PaymentCardWidgetState();
@@ -21,7 +21,7 @@ class _PaymentCardWidgetState extends State<PaymentCardWidget> {
         right: 20,
       ),
       padding: EdgeInsets.only(top: 10),
-      height: screenAwareSize(80, context),
+      height: screenAwareSize(65, context),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(6),
@@ -36,7 +36,7 @@ class _PaymentCardWidgetState extends State<PaymentCardWidget> {
       child: ListTile(
         dense: true,
         trailing: Text(
-          "${widget.payment.type > 0 ? "+" : "-"} \$ ${widget.payment.amount}",
+          "${widget.transaction.paymentType > 0 ? "+" : "-"} \$ ${widget.transaction.amount}",
           style: TextStyle(
               inherit: true, fontWeight: FontWeight.w700, fontSize: 16.0),
         ),
@@ -45,18 +45,18 @@ class _PaymentCardWidgetState extends State<PaymentCardWidget> {
           child: Material(
             elevation: 10,
             shape: CircleBorder(),
-            shadowColor: widget.payment.color.withOpacity(0.4),
+            shadowColor: Colors.green.withOpacity(0.4),
             child: Container(
               height: 50,
               width: 50,
               decoration: BoxDecoration(
-                color: widget.payment.color,
+                color: Colors.green,
                 shape: BoxShape.circle,
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Icon(
-                  widget.payment.icon,
+                  Icons.map,
                   color: Colors.white,
                 ),
               ),
@@ -67,7 +67,7 @@ class _PaymentCardWidgetState extends State<PaymentCardWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Text(
-              widget.payment.name,
+              widget.transaction.name,
               style: TextStyle(
                   inherit: true, fontWeight: FontWeight.w700, fontSize: 16.0),
             ),
@@ -78,13 +78,13 @@ class _PaymentCardWidgetState extends State<PaymentCardWidget> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text(widget.payment.date,
+              Text(widget.transaction.date,
                   style: TextStyle(
                       inherit: true, fontSize: 12.0, color: Colors.black45)),
               SizedBox(
                 width: 20,
               ),
-              Text(widget.payment.hour,
+              Text(widget.transaction.hour,
                   style: TextStyle(
                       inherit: true, fontSize: 12.0, color: Colors.black45)),
               Spacer(),

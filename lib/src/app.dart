@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pages/overview_page.dart';
+import 'pages/transactions_page.dart';
 
 class App extends StatelessWidget {
   @override
@@ -9,7 +9,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         fontFamily: "Varela",
       ),
-      home: OverviewPage(),
+      home: TransactionsPage(),
     );
   }
 }

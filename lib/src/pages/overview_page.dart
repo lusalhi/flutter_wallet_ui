@@ -5,9 +5,6 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter_wallet_ui_challenge/src/widgets/percent_indicator.dart';
 import 'package:flutter_wallet_ui_challenge/src/widgets/wave_progress.dart';
 
-import '../data/data.dart';
-import '../widgets/payment_card.dart';
-
 var data = [
   new DataPerItem('Home', 35, Colors.greenAccent),
   new DataPerItem('Food & Drink', 25, Colors.yellow),
@@ -34,7 +31,7 @@ class OverviewPage extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         padding: EdgeInsets.only(
           left: 20,
-          top: 20,
+          top: 50,
         ),
         children: <Widget>[
           Text(
@@ -200,16 +197,23 @@ class OverviewPage extends StatelessWidget {
               letterSpacing: 0.4,
             ),
           ),
-          PaymentCardWidget(
-            payment: getPaymentsCard()[0],
-          ),
-          PaymentCardWidget(
-            payment: getPaymentsCard()[1],
-          ),
-          PaymentCardWidget(
-            payment: getPaymentsCard()[3],
-          ),
+          // PaymentCardWidget(
+          //   transaction: getPaymentsCard()[0],
+          // ),
+          // PaymentCardWidget(
+          //   transaction: getPaymentsCard()[1],
+          // ),
+          // PaymentCardWidget(
+          //   transaction: getPaymentsCard()[3],
+          // ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+        onPressed: () {},
       ),
     );
   }
