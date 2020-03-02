@@ -33,3 +33,28 @@
 //     "07-23", "10.04", 1151.00, -1),
 // PaymentModel(Icons.train, Colors.green, "Train ticket to Turkey", "07-23",
 //     "09.04", 37.00, -1),
+
+import 'package:flutter/material.dart';
+import 'package:flutter_wallet_ui_challenge/src/models/transaction_model.dart';
+import 'package:flutter_wallet_ui_challenge/src/widgets/donut_charts.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
+
+List<TransactionModel>
+    transactions = [];
+
+var data = [
+  new DataPerItem('Home', 35, Colors.greenAccent),
+  new DataPerItem('Food & Drink', 25, Colors.yellow),
+  new DataPerItem('Hotel & Restaurant', 24, Colors.indigo),
+  new DataPerItem('Travelling', 40, Colors.pinkAccent),
+];
+
+var series = [
+  new charts.Series(
+    domainFn: (DataPerItem clickData, _) => clickData.name,
+    measureFn: (DataPerItem clickData, _) => clickData.percent,
+    colorFn: (DataPerItem clickData, _) => clickData.color,
+    id: 'Item',
+    data: data,
+  ),
+];
