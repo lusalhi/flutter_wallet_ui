@@ -1,14 +1,14 @@
 import 'dart:convert';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_wallet_ui_challenge/src/data/data.dart';
-import 'package:flutter_wallet_ui_challenge/src/models/transaction_model.dart';
-import 'package:flutter_wallet_ui_challenge/src/pages/transactions_page.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
 
-import 'package:flutter_wallet_ui_challenge/src/widgets/cash_flow.dart';
-import 'package:flutter_wallet_ui_challenge/src/widgets/budgets_bar.dart';
-import 'package:flutter_wallet_ui_challenge/src/widgets/spending_chart.dart';
+import '../data/data.dart';
+import '../models/transaction_model.dart';
+import '../pages/transactions_page.dart';
+import '../widgets/floating_action_button.dart';
+import '../widgets/cash_flow.dart';
+import '../widgets/budgets_bar.dart';
+import '../widgets/spending_chart.dart';
 
 class OverviewPage extends StatelessWidget {
   @override
@@ -31,7 +31,7 @@ class OverviewPage extends StatelessWidget {
                 );
               case ConnectionState.done:
                 if (snapshot.hasError) {
-                  return Text('Error');
+                  return Center(child: Text(snapshot.error.toString()));
                 }
             }
             return ListView(
@@ -64,95 +64,76 @@ class OverviewPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 25,
-                ),
+                SizedBox(height: 25),
                 CashFlow(),
-                SizedBox(
-                  height: 30,
-                ),
+                SizedBox(height: 30),
                 SpendingChart(),
-                SizedBox(
-                  height: 30,
-                ),
+                SizedBox(height: 30),
                 BudgetsBar(),
-                SizedBox(
-                  height: 30,
-                ),
-                Text(
-                  "Transactions",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    inherit: true,
-                    letterSpacing: 0.4,
-                  ),
-                ),
+                SizedBox(height: 30),
                 TransactionsPage()
               ],
             );
           }
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
-        onPressed: () {},
-      ),
+      floatingActionButton: MyFAB(),
     );
   }
 
   Future<void> addTransaction() async {
-    String year = DateTime.now().year.toString();
-    String month = DateTime.now().month.toString();
-    String day = DateTime.now().day.toString();
+    var post = TransactionModel(
+        name: 'bala gehu',
+        date: 03,
+        paymentType: -1,
+        hour: '14.40',
+        iconId: 1321,
+        amount: 5000,
+        yearmonth: 202003);
+    // String year = DateTime.now().year.toString();
+    // String month = DateTime.now().month.toString();
+    // String day = DateTime.now().day.toString();
     var url = 'https://wallet-ee0b1.firebaseio.com/wallet.json';
     print(url);
     http.post(
       url,
-      body: json.encode(
-        {
-          'name': 'pop corn',
-          'amount': '15000',
-          'date': day,
-          'hour': '14.50',
-          'paymentType': '-1',
-          'iconId': '123',
-        },
-      ),
+      body: json.encode({
+        'name': post.name,
+        'date': post.date,
+        'paymentType': post.paymentType,
+        'hour': post.hour,
+        'iconId': post.iconId,
+        'amount': post.amount,
+        'yearMonth': post.yearmonth
+      }),
     );
   }
 
   Future<void> fetchTransactions() async {
     print('a');
     transactions.clear();
-    String year = DateTime.now().year.toString();
-    String month = DateTime.now().month.toString();
+    // String year = DateTime.now().year.toString();
+    // String month = DateTime.now().month.toString();
     var url = 'https://wallet-ee0b1.firebaseio.com/wallet.json';
     print(url);
     try {
       final response = await http.get(url);
-      print(response.body);
-      final extractedData = json.decode(response.body)
-          as YearTransactionModel<MonthTransactionModel<TransactionModel>>;
-      print(extractedData);
-      // forEach(
-      //   (transData) {
-      //     transactions.add(
-      //       TransactionModel(
-      //         transData,
-      //         int.parse(transData['iconId']),
-      //         transData['name'].toString(),
-      //         transData['date'].toString(),
-      //         transData['hour'].toString(),
-      //         double.parse(transData['amount']),
-      //         int.parse(transData['paymentType']),
-      //       ),
-      //     );
-      //   },
-      // );
+      final extractedData = json.decode(response.body);
+      extractedData.forEach(
+        (transId, transData) {
+          transactions.add(
+            TransactionModel(
+              id: transId,
+              amount: transData['amount'],
+              iconId: transData['iconId'],
+              hour: transData['hour'],
+              paymentType: (transData['paymentType']),
+              date: transData['date'],
+              name: transData['name'],
+            ),
+          );
+        },
+      );
     } catch (error) {
       throw (error);
     }

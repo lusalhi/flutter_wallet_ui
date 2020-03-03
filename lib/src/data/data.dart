@@ -1,21 +1,6 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_wallet_ui_challenge/src/models/transaction_model.dart';
 
-// List<TransactionModel> getPaymentsCard() {
-//   List<TransactionModel> paymentCards = [
-//     TransactionModel(Icons.receipt, Color(0xFFffd60f), "Florenti Restaurant",
-//         "07-23", "20.04", 251.00, -1),
-//     TransactionModel(Icons.monetization_on, Color(0xFFff415f), "Transfer To Anna",
-//         "07-23", "14.01", 64.00, -1),
-//     TransactionModel(Icons.location_city, Color(0xFF50f3e2), "Loan To Sanchez",
-//         "07-23", "10.04", 1151.00, -1),
-//     TransactionModel(Icons.train, Colors.green, "Train ticket to Turkey", "07-23",
-//         "09.04", 37.00, -1),
-//   ];
-
-//   return paymentCards;
-// }
-
 // List<CategoryModel> getCategoryModel() {
 //   List<CategoryModel> categoryModel = [
 //     CategoryModel(1, Icons.receipt, Color(0xFFffd60f)),
@@ -39,8 +24,21 @@ import 'package:flutter_wallet_ui_challenge/src/models/transaction_model.dart';
 import 'package:flutter_wallet_ui_challenge/src/widgets/donut_charts.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
-List<TransactionModel>
-    transactions = [];
+List<TransactionModel> transactions = [];
+
+// List<TransactionModel> oneMonthTransactions() {
+//   transactions.forEach(
+//     (data) {
+//       print(data.month);
+//       if (data.month == 202003) {
+//         print(data.transactions);
+//         return data.transactions;
+//       }
+//       return null;
+//     },
+//   );
+//   return null;
+// }
 
 var data = [
   new DataPerItem('Home', 35, Colors.greenAccent),
